@@ -1,18 +1,31 @@
-﻿body{
+﻿body {
     background-color: #764134;
+    font-family: 'Black And White Picture', sans-serif;
 }
 
-a{
+header {
+    background-color: #2A1A1F;
+    color: #AD8350;
+}
+
+h1 {
+    color: #AD8350;
+    font-size: 40px;
+    letter-spacing: 40px;
+    margin-left: 80px;
+}
+
+a {
     color: #AFA060;
 }
 
-table{
+table {
     border: dashed;
     border-color: #000000;
 }
 
 thead td {
-    border: dashed;
+    border: solid;
     font-size: 18px;
     font-weight: bold;
 }
@@ -20,20 +33,26 @@ thead td {
 td {
     padding: 12px;
     border: dashed;
-    border-color: #2A1A1F;
     font-size: 14px;
     text-align: right;
 }
 
-button{
+button {
     margin: 15px;
     width: 140px;
     height: 40px;
     background-color: #AD8350;
 }
 
-.Card{
+.Card {
     height: 303px;
     width: 208px;
     padding: 15px;
+}
+
+.Stack {
+    float: left;
+}
+
+.ButtonShelf {
 }

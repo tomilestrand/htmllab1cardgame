@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <title>My card game</title>
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-reboot.css" />
     <link href="My Card Game Style Sheet.css" rel="stylesheet" type="text/css" />
     <style>
     </style>
 </head>
+
 <body>
     <h1>My Card Game</h1>
 
@@ -27,27 +29,29 @@
 
     <main>
         <div>
-            <img class="Card" src="208px-Card_back_05.svg.png" alt="Deck of cards" />
-            <h4></h4>
+            <div class="Stack">
+                <img class="Card" src="208px-Card_back_05.svg.png" alt="Deck of cards" />
+                <h4></h4>
+            </div>
+
+            <div class="Stack">
+                <img class="Card" src="English_pattern_10_of_clubs.svg.png" alt="Your hand" />
+                <h4>Player</h4>
+            </div>
+
+            <div class="Stack">
+                <img class="Card" src="208px-Card_back_05a.svg.png" alt="Computers hand" />
+                <h4>Computer</h4>
+            </div>
+
+            <div class="Stack">
+                <img class="Card" src="English_pattern_3_of_diamonds.svg.png" alt="Discard pile" />
+                <h4>Discard</h4>
+            </div>
         </div>
 
-        <div>
-            <img class="Card" src="English_pattern_10_of_clubs.svg.png" alt="Your hand" />
-            <h4>Player</h4>
-        </div>
 
-        <div>
-            <img class="Card" src="208px-Card_back_05a.svg.png" alt="Computers hand" />
-            <h4>Computer</h4>
-        </div>
-
-        <div>
-            <img class="Card" src="English_pattern_3_of_diamonds.svg.png" alt="Discard pile" />
-            <h4>Discard</h4>
-        </div>
-
-
-        <section>
+        <section class="ButtonShelf">
             <button>New Game</button>
             <button>Pause</button>
             <button>Save Game</button>
@@ -56,7 +60,7 @@
 
     <table>
         <thead>
-            <tr>    
+            <tr>
                 <td>Name</td>
                 <td>Date</td>
                 <td>Score</td>
