@@ -1,10 +1,14 @@
 ﻿body{
-    background-color: #A0A0A0;
+    background-color: #764134;
+}
+
+a{
+    color: #AFA060;
 }
 
 table{
     border: dashed;
-    border-color: #090909;
+    border-color: #000000;
 }
 
 thead td {
@@ -16,7 +20,7 @@ thead td {
 td {
     padding: 12px;
     border: dashed;
-    border-color: #4C4C4C;
+    border-color: #2A1A1F;
     font-size: 14px;
     text-align: right;
 }
@@ -25,9 +29,11 @@ button{
     margin: 15px;
     width: 140px;
     height: 40px;
+    background-color: #AD8350;
 }
 
 .Card{
     height: 303px;
     width: 208px;
+    padding: 15px;
 }
