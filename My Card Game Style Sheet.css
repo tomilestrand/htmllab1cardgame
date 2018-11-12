@@ -1,0 +1,33 @@
+﻿body{
+    background-color: #A0A0A0;
+}
+
+table{
+    border: dashed;
+    border-color: #090909;
+}
+
+thead td {
+    border: dashed;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px;
+    border: dashed;
+    border-color: #4C4C4C;
+    font-size: 14px;
+    text-align: right;
+}
+
+button{
+    margin: 15px;
+    width: 140px;
+    height: 40px;
+}
+
+.Card{
+    height: 303px;
+    width: 208px;
+}
