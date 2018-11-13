@@ -15,7 +15,7 @@ h1 {
     margin-left: 80px;
 }
 
-a {
+ul li a {
     color: #AFA060;
 }
 
@@ -44,15 +44,42 @@ button {
     background-color: #AD8350;
 }
 
-.Card {
+img {
     height: 303px;
     width: 208px;
     padding: 15px;
 }
 
-.Stack {
-    float: left;
+.main div {
+    position: absolute;
 }
 
-.ButtonShelf {
+.card {
+    position: relative;
+    margin: auto;
+    display: block;
+}
+
+.buttonshelf {
+}
+
+#computer,
+#player {
+    top: 250px;
+}
+
+#deck {
+    left: 5vw;
+}
+
+#computer {
+    left: 20vw;
+}
+
+#player {
+    left: 45vw;
+}
+
+#discard {
+    left: 75vw;
 }
