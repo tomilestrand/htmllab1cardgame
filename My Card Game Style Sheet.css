@@ -45,41 +45,47 @@ button {
 }
 
 img {
-    height: 303px;
-    width: 208px;
-    padding: 15px;
+    
 }
 
-.main div {
+main div {
     position: absolute;
+    margin: 25px;
+    padding: 15px;
 }
 
 .card {
     position: relative;
     margin: auto;
     display: block;
+    height: 151.5px;
+    width: 104px;
+    padding: 15px;
 }
 
 .buttonshelf {
+    
+}
+#deck, #discard{
+    top: 40vw;
 }
 
 #computer,
 #player {
-    top: 250px;
+    top: 15vh;
 }
 
-#deck {
-    left: 5vw;
+#computer, #discard {
+    left: 30vw;
 }
 
-#computer {
-    left: 20vw;
-}
-
-#player {
+#player, #deck {
     left: 45vw;
 }
 
-#discard {
-    left: 75vw;
+
+
+footer{
+    position: absolute;
+    top: 70vw;
 }
