@@ -10,7 +10,7 @@ header {
 
 h1 {
     color: #AD8350;
-    font-size: 40px;
+    font-size: 48px;
     letter-spacing: 40px;
     margin-left: 80px;
 }
@@ -28,13 +28,14 @@ thead td {
     border: solid;
     font-size: 18px;
     font-weight: bold;
+    background-color: #AD8350;
 }
 
 td {
     padding: 12px;
     border: dashed;
     font-size: 14px;
-    text-align: right;
+    background-color: #AFA060;
 }
 
 button {

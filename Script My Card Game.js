@@ -1,6 +1,5 @@
 ﻿//const numberOfCards = 5;
-let playerScore = 0;
-
+let el = document.querySelector("#player");
 
 function CreateDeck() {
     let setOfCards = [];
@@ -15,18 +14,29 @@ function CreateDeck() {
 }
 let setOfCards = CreateDeck();
 
-//for (var i = 0; i < numberOfCards; i++) {
-//    setOfCards.push([values[
-//        Math.floor(Math.random() * values.length)]]
-//        + suites[
-//        Math.floor(Math.random() * suites.length)]);
-//};
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+setOfCards = shuffle(setOfCards);
 
 function DealCards(cards) {
     let computerDeck = [];
     let playerDeck = [];
     for (var i = 0; i < cards.length; i++) {
-        if (i % 2 == 0) {
+        if (i % 2 === 0) {
             playerDeck.push(cards[i]);
         }
         else {
@@ -38,17 +48,36 @@ function DealCards(cards) {
 
 let decks = DealCards(setOfCards);
 
-function ComputerDrawCard() {
-    return decks.computerDeck.pop();
+let gameState = {
+    score: 0,
+
 };
 
-function PlayerPlayCard() {
+function ComputerDrawsCard(computerCards, cardDrawnFunction) {
+    if (computerCards.length > 0) {
 
+        setTimeout(function () {
+            let theCard = computerCards.pop();
+            cardDrawnFunction(theCard);
+            ComputerDrawsCard(computerCards, cardDrawnFunction);
+        }, Math.floor(Math.random() * 3 + 1) * 1000);
+    };
+};
+
+
+
+function PlayerDrawsCard(playerCards, playerDrawFunction) {
+    if (playerCards.length > 0) {
+
+        setTimeout(function () {
+            let playerCard = playerCards.pop();
+            playerDrawFunction(playerCard);
+            PlayerDrawsCard(playerCards, playerDrawFunction);
+        }, Math.floor(Math.random() * 3 + 1) * 1000);
+    };
 };
 
 function ScorePoint(card1, card2) {
-    console.log(card1);
-    console.log(card2);
     if (card1[0] === card2[0] || card1[1] === card2[1]) {
         return 1;
     }
@@ -57,6 +86,21 @@ function ScorePoint(card1, card2) {
     };
 };
 
-playerScore += ScorePoint(ComputerDrawCard(), decks.playerDeck[0]);
 
-console.log(playerScore);
+
+ComputerDrawsCard(decks.computerDeck, function (theCard) {
+    gameState.currentComputerCard = theCard;
+});
+
+setTimeout(function () {
+    console.log("Start!");
+    PlayerDrawsCard(
+        decks.playerDeck,
+        function (theCard) {
+            gameState.score += ScorePoint(theCard, gameState.currentComputerCard);
+            let p = document.querySelector("#score");
+                p.textContent = gameState.score;
+        }
+    );
+}, 3000);
+
