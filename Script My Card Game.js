@@ -1,7 +1,4 @@
-﻿//const numberOfCards = 5;
-let el = document.querySelector("#player");
-
-function CreateDeck() {
+﻿function CreateDeck() {
     let setOfCards = [];
     const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "0", "J", "Q", "K"];
     const suites = ["S", "D", "C", "H"];
@@ -12,13 +9,11 @@ function CreateDeck() {
     });
     return setOfCards;
 }
-let setOfCards = CreateDeck();
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (0 !== currentIndex) {
-
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
 
@@ -29,8 +24,6 @@ function shuffle(array) {
 
     return array;
 }
-
-setOfCards = shuffle(setOfCards);
 
 function DealCards(cards) {
     let computerDeck = [];
@@ -46,13 +39,6 @@ function DealCards(cards) {
     return { playerDeck, computerDeck };
 };
 
-let decks = DealCards(setOfCards);
-
-let gameState = {
-    score: 0,
-
-};
-
 function ComputerDrawsCard(computerCards, cardDrawnFunction) {
     if (computerCards.length > 0) {
 
@@ -63,8 +49,6 @@ function ComputerDrawsCard(computerCards, cardDrawnFunction) {
         }, Math.floor(Math.random() * 3 + 1) * 1000);
     };
 };
-
-
 
 function PlayerDrawsCard(playerCards, playerDrawFunction) {
     if (playerCards.length > 0) {
@@ -87,20 +71,24 @@ function ScorePoint(card1, card2) {
 };
 
 
+let gameState = {
+    score: 0,
+    currentComputerCard: null,
+    decks: DealCards(shuffle(CreateDeck())),
+};
 
-ComputerDrawsCard(decks.computerDeck, function (theCard) {
+ComputerDrawsCard(gameState.decks.computerDeck, function (theCard) {
     gameState.currentComputerCard = theCard;
 });
 
 setTimeout(function () {
     console.log("Start!");
     PlayerDrawsCard(
-        decks.playerDeck,
+        gameState.decks.playerDeck,
         function (theCard) {
             gameState.score += ScorePoint(theCard, gameState.currentComputerCard);
             let p = document.querySelector("#score");
-                p.textContent = gameState.score;
+            p.textContent = gameState.score;
         }
     );
 }, 3000);
-

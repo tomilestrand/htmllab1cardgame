@@ -62,11 +62,17 @@ main div {
     height: 151.5px;
     width: 104px;
     padding: 15px;
+    display: none;
+}
+
+#played{
+    display:none;
 }
 
 .buttonshelf {
     
 }
+
 #deck, #discard{
     top: 40vw;
 }
