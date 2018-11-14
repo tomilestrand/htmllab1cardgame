@@ -9,6 +9,7 @@
     var $played = $("#played")
 
     $newGameButton.click(function () {
+        playGame();
         $cards.show();
         timer = startTimer($timer);
         $playerCards.addClass("playCard");
@@ -41,5 +42,6 @@
             $played.show(2500, function () {
                 $played.hide();
             });
-        };
-    });
+        });
+    };
+});

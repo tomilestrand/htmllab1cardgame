@@ -53,14 +53,19 @@ main div {
     position: absolute;
     margin: 25px;
     padding: 15px;
+    font-size: 30px;
+}
+
+main div p {
+    top: 5vh;
 }
 
 .card {
     position: relative;
     margin: auto;
     display: block;
-    height: 151.5px;
-    width: 104px;
+    height: 30vh;
+    width: 20vh;
     padding: 15px;
     display: none;
 }
@@ -73,26 +78,26 @@ main div {
     
 }
 
-#deck, #discard{
-    top: 40vw;
+#deck{
+    left: 70vw;
 }
 
-#computer,
+
 #player {
-    top: 15vh;
+    left: 50vw;
 }
 
-#computer, #discard {
+#discard {
+    left: 10vw;
+}
+
+#computer {
     left: 30vw;
-}
-
-#player, #deck {
-    left: 45vw;
 }
 
 
 
 footer{
     position: absolute;
-    top: 70vw;
+    top: 70vh;
 }
