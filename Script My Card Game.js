@@ -1,44 +1,6 @@
 ﻿$(function () {
-    function dealcards() {
-        let computerDeck = [];
-        let playerDeck = [];
-        let deckID = $.getJSON("https://deckofcardsapi.com/api/deck/new/shuffle/", function (data) {
-            deckID = data.deck_id;
-            let url = "https://deckofcardsapi.com/api/deck/" + deckID + "/draw/";
-            console.log(url);
-            for (var i = 0; i < deck.length; i++) {
-                if (i % 2 === 0) {
-                    playerDeck.push(deck[i]);
-                }
-                else {
-                    computerDeck.push(deck[i]);
-                };
-            };
-            return { playerDeck, computerDeck };
-        });
-    };
-
-    function ComputerDrawsCard(computerCards, cardDrawnFunction) {
-        if (computerCards.length > 0) {
-
-            setTimeout(function () {
-                let theCard = computerCards.pop();
-                cardDrawnFunction(theCard);
-                ComputerDrawsCard(computerCards, cardDrawnFunction);
-            }, Math.floor(Math.random() * 3 + 1) * 1000);
-        };
-    };
-
-    function PlayerDrawsCard(playerCards, playerDrawFunction) {
-        if (playerCards.length > 0) {
-
-            setTimeout(function () {
-                let playerCard = playerCards.pop();
-                playerDrawFunction(playerCard);
-                PlayerDrawsCard(playerCards, playerDrawFunction);
-            }, Math.floor(Math.random() * 3 + 1) * 1000);
-        };
-    };
+    var timerClock = null;
+    var paused = false;
 
     function ScorePoint(card1, card2) {
         if (card1[0] === card2[0] || card1[1] === card2[1]) {
@@ -49,69 +11,38 @@
         };
     };
 
-    function playGame() {
-        let gameState = {
-            score: 0,
-            currentComputerCard: null,
-            decks: dealcards(),
-        };
-
-        ComputerDrawsCard(gameState.decks.computerDeck, function (theCard) {
-            gameState.currentComputerCard = theCard;
-        });
-
-        setTimeout(function () {
-            console.log("Start!");
-            PlayerDrawsCard(
-                gameState.decks.playerDeck,
-                function (theCard) {
-                    gameState.score += ScorePoint(theCard, gameState.currentComputerCard);
-                    let p = document.querySelector("#score");
-                    p.textContent = gameState.score;
-                }
-            );
-        }, 3000);
-    };
-
-    var $cards = $(".card");
-    var $newGameButton = $("button.newGame");
-    var $pauseGameButton = $("button.pauseGame");
-    var $timer = $("#timer");
-    var timer = null;
-    var $playerCards = $("#player");
-    var $played = $("#played")
-    var paused = false;
-
-    $newGameButton.click(function () {
-        $cards.show();
+    $("button.newGame").click(function () {
+        $(".card").show();
         paused = false;
-        timer = startTimer($timer);
-        $playerCards.addClass("playCard");
-        $(".playCard").click(function () {
+        timerClock = startTimer($("#timer"));
+        $("#player".click(function () {
             if (paused === false && computerCard !== undefined) {
 
                 $.getJSON(baseUrl + deckID + "/draw/")
                     .done(function (draw) {
                         setPlayerCard(draw.cards[0]);
-                        $("#score").text(parseInt($("#score").text()) + ScorePoint(playerCard, computerCard))
+                        $("#score").text(parseInt($("#score").text()) + ScorePoint(playerCard, computerCard));
+                        clearTimeout(computerTimer);
+                        SetNewComputerCard();
+                    })
+                    .fail(function () {
+                        aler("Player Draw Failed");
                     });
-                $played.show(2500, function () {
-                    $played.hide();
+                $("#played").show(1500, function () {
+                    $("#played").hide();
                 });
             };
         });
     });
 
-    $pauseGameButton.click(function () {
+    $("button.pauseGame").click(function () {
         if (paused === false) {
-            pauseTimer(timer);
+            pauseTimer(timerClock);
             paused = true;
-            $playerCards.removeClass("playCard");
-            $(".playCard").off("click");
         }
         else if (paused === true) {
             paused = false;
-            startTimer($timer);
+            startTimer($("#timer"));
             ComputerDrawsCard();
         }
 
@@ -133,6 +64,7 @@
     let playerCard;
     let computerCard;
     const baseUrl = "https://deckofcardsapi.com/api/deck/"
+    let computerTimer;
 
     $(".newGame").click(function () {
         $.getJSON(baseUrl + "new/shuffle/")
@@ -151,22 +83,26 @@
     });
     function setPlayerCard(card) {
         playerCard = card.code;
-        $("#player img.card").attr("src", card.image)
+        $("#player img.card").attr("src", card.image);
     }
     function ComputerDrawsCard() {
-        setTimeout(function () {
-            $.getJSON(baseUrl + deckID + "/draw/")
-                .done(function (draw) {
-                    computerCard = draw.cards[0].code;
-                    $("#computer img.card").attr("src", draw.cards[0].image);
-                    if (paused === false) {
-                        ComputerDrawsCard();
-                    }
-                })
-                .fail(function () {
-                    alert("Computer draw failed");
-                });
+        computerTimer = setTimeout(function () {
+            SetNewComputerCard();
         }, Math.floor(Math.random() * 3 + 1) * 1000);
+    };
+
+    function SetNewComputerCard() {
+        $.getJSON(baseUrl + deckID + "/draw/")
+            .done(function (draw) {
+                computerCard = draw.cards[0].code;
+                $("#computer img.card").attr("src", draw.cards[0].image);
+                if (paused === false) {
+                    ComputerDrawsCard();
+                }
+            })
+            .fail(function () {
+                alert("Computer draw failed");
+            });
     };
 });
 

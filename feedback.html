@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Feedback</title>
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-reboot.css" />
+    <link href="FeedbackStyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="FeedbackScript.js"></script>
+</head>
+<body>
+    <form name="feedback" action="/" method="post">
+        <fieldset>
+            <div>
+                <label for="name">Name: </label>
+                <input type="text" id="name" placeholder="Your name" required>
+            </div>
+
+            <div class="radio">
+                <!--<input type="range" id="satisfaction" min="0" max="5" />-->
+                <label for="satisfaction">How happy are you with you score?</label>
+                <input type="radio" name="satisfaction" value="0" class="zero"> 0
+                <input type="radio" name="satisfaction" value="1"> 1
+                <input type="radio" name="satisfaction" value="2"> 2
+                <input type="radio" name="satisfaction" value="3"> 3
+                <input type="radio" name="satisfaction" value="4"> 4
+                <input type="radio" name="satisfaction" value="5" checked> 5
+                <p id="stars"></p>
+            </div>
+
+            <div>
+                <label for="favcolor">What is your favorite color?</label>
+                <input type="color" id="favcolor" value="#FF8000" />
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <button type="submit" form="feedback" value="Submit">OK</button>
+    </div>
+    <table id="fbtable">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Satisfaction</td>
+                <td>Favorite Color</td>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>
