@@ -1,0 +1,160 @@
+﻿$basecolor: #764134;
+$reasonableSpace: 20px;
+$accentcolor: #AD8350;
+$darkcolor: #2A1A1F;
+$lightcolor: #AFA060;
+$black: #000000;
+
+body {
+    background-color: $basecolor;
+    font-family: 'Black And White Picture', sans-serif;
+}
+
+fieldset {
+    margin: 3vh 3vw;
+    background-color: $darkcolor;
+    color: $accentcolor;
+}
+
+button {
+    margin: 3vw;
+    background: linear-gradient($basecolor,$accentcolor);
+    width: 120px;
+}
+
+input[type=radio] {
+    cursor: crosshair;
+    box-shadow: 3px 3px 6px $accentcolor;
+}
+
+.zero {
+    cursor: not-allowed !important;
+}
+
+table {
+    margin: 2vh 3vw;
+}
+
+table tr td {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+header {
+    background-color: $darkcolor;
+    color: $accentcolor;
+}
+
+h1 {
+    color: $accentcolor;
+    font-size: 48px;
+    letter-spacing: 40px;
+    margin-left: 80px;
+}
+
+ul li a {
+    color: $lightcolor;
+}
+
+table {
+    border: dashed;
+    border-color: $black;
+}
+
+thead td {
+    border: solid;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: $accentcolor;
+}
+
+td {
+    padding: 12px;
+    border: dashed;
+    font-size: 14px;
+    background-color: $lightcolor;
+}
+
+button {
+    margin: 15px;
+    width: 140px;
+    height: 40px;
+    background-color: $accentcolor;
+}
+
+main {
+    margin: 25px 25px 75px 25px;
+}
+
+main div {
+    /*position: absolute;*/
+    padding: 15px;
+    font-size: 30px;
+}
+
+main div p {
+    top: 5vh;
+    right: 2vw;
+}
+
+.card {
+    /*position: relative;*/
+    /*margin: auto;*/
+    /*display: block;*/
+    /*height: 30vh;*/
+    width: 250px;
+    padding: 15px;
+    /*display: none;*/
+    transition: transform 0.2s ease-in-out 0.5s;
+}
+
+#played {
+    display: none;
+}
+
+.buttonshelf {
+}
+
+#deck {
+    /*left: 70vw;*/
+}
+
+
+#player {
+    /*left: 50vw;*/
+    transition: transform 0.2s ease-in-out 0.5s;
+}
+
+#player .card:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+#discard {
+    /*left: 10vw;*/
+}
+
+#computer {
+    /*left: 30vw;*/
+    transition: transform 0.5s;
+}
+
+#computer img.card {
+    transform: rotate(60deg);
+}
+
+
+footer {
+    position: absolute;
+    top: 70vh;
+}
+
+.flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+
+.flexItem {
+    width: 250px;
+}

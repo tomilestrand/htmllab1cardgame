@@ -15,7 +15,7 @@
         $(".card").show();
         paused = false;
         timerClock = startTimer($("#timer"));
-        $("#player".click(function () {
+        $("#player").click(function () {
             if (paused === false && computerCard !== undefined) {
 
                 $.getJSON(baseUrl + deckID + "/draw/")
@@ -47,8 +47,6 @@
         }
 
     });
-
-
 
     function startTimer($timer) {
         var timer = setInterval(function () {
@@ -95,7 +93,9 @@
         $.getJSON(baseUrl + deckID + "/draw/")
             .done(function (draw) {
                 computerCard = draw.cards[0].code;
-                $("#computer img.card").attr("src", draw.cards[0].image);
+                //$("#computerdeck").empty();
+                //let image = '<img class="card" src="' + draw.cards[0].image + '" alt="Computers hand" />';
+                $("#computerdeck img.card").attr("src", draw.cards[0].image);
                 if (paused === false) {
                     ComputerDrawsCard();
                 }
